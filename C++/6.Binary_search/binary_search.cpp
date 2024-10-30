@@ -6,7 +6,7 @@ int binary_search(int arr[],int key,int n){
 	int e = n-1;
 	while(s<=e)
 	{
-		int mid = (s+e)/2;
+		int mid = s + (e-s)/2;
 		if(arr[mid] == key)
 		{
 			return mid;
@@ -27,6 +27,6 @@ int binary_search(int arr[],int key,int n){
 
 int main(){
 	int arr[] = {1,2,3,4,5,6,7};
-	cout << binary_search(arr,2,1) << "\n";
+	cout << binary_search(arr,2,6) << "\n";
 	return 0;
 }
