@@ -2,7 +2,6 @@
 #include<vector>
 #include<unordered_set>
 using namespace std;
-
 vector<int> pairSum(vector<int> arr,int Sum){
 	unordered_set<int> s;
 	vector<int> result;
@@ -16,7 +15,6 @@ vector<int> pairSum(vector<int> arr,int Sum){
 	}
 	return {};
 }
-
 
 int main(){
 	cout << "something";
