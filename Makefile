@@ -5,4 +5,4 @@ all:
 compile:
 	$(CXX) $(FILE) -o $(basename $(FILE))  
 clean:
-	rm -f *.exe *.o *.out
+	rm -f Stuff/*.exe Stuff/*.o Stuff/*.out
