@@ -3,6 +3,8 @@ CXX = g++
 all:
 	@echo "Usage : make compile FILE_NAME"
 compile:
-	$(CXX) Stuff/$(FILE) -o Stuff/$(basename $(FILE)).exe  
+	$(CXX) $(FILE) -o$(basename $(FILE)).exe  
+run:
+	@$(FILE)
 clean:
-	rm -f Stuff/*.exe Stuff/*.o Stuff/*.out
+	rm -f *.exe *.o *.out
