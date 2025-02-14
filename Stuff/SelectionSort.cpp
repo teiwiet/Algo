@@ -5,5 +5,5 @@ void selection_sort(int a[],int n){
 
 }
 int main(){
-	return 0;
+	cout << "Something\n";
 }
