@@ -10,7 +10,6 @@ public:
 		next = NULL;
 	}
 };
-
 void insertAtHead(node* &head,int data){
 	if(head==NULL){
 		head = new node(data);
