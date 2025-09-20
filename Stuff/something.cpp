@@ -1,11 +1,8 @@
 #include<iostream>
 using namespace std;
 
-class node{
-public:
-};
-
-
 int main(){
-
+    int n;
+    cin >> n;
+    cout << n;
 }

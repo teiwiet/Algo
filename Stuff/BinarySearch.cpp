@@ -1,5 +1,4 @@
 #include<iostream>
-#include<vector>
 using namespace std;
 
 int binary_search(int a[],int n,int target){
