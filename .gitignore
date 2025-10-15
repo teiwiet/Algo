@@ -1,3 +1,12 @@
+<<<<<<< HEAD
 *.exe
 /.vscode
 *.pdb
+=======
+*
+!*/
+!*.cpp
+!*.h
+!.gitignore
+!*.rs
+>>>>>>> 65744cfddb2c45546090f1b1b054d680a36c97a7
