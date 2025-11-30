@@ -2,46 +2,55 @@
 #include<stack>
 
 using namespace std;
-
 class Solution{
 public:
-	string infixToPostfix(string& s){
-		stack<char> stk;
-		string res = "";
-		for(char c : s){
-			if(isalnum(c)){
-				res+=c;
+int precendence(char c){
+	if(c=='^') return 3;
+	if(c=='*' || c=='/') return 2;
+	if(c=='+' || c=='-') return 1;
+	return -1;
+}
+
+bool isAssociated(char c){
+	return c=='^';
+}
+string infixToPostfix(string& s){
+	stack<char> st;
+	string res = "";
+	for(char c:s){
+		if(isalnum(c)){
+			res+=c;
+		}
+		else if(c=='('){
+			st.push(c);
+		}
+		else if(c==')'){
+			while(!st.empty() && st.top()!='('){
+				res+=st.top();
+				st.pop();
 			}
-			else{
-				while(!stk.empty()){
-					int currP = precendence(c);
-					int topP = precendence(stk.top());
-					if(topP > currP || (currP==topP && !isAssociated(c))){
-						res+=stk.top();
-						stk.pop();
-					}
-					else break;
+			st.pop();
+		}
+		else{
+			while(!st.empty()){
+				int topP = precendence(st.top());
+				int currP = precendence(c);
+				if(topP > currP || (topP==currP && !isAssociated(c))){
+					res+=st.top();
+					st.pop();
 				}
-				stk.push(c);
+				else break;
 			}
+			st.push(c);
 		}
-		while(!stk.empty()){
-			res+=stk.top();
-			stk.pop();
-		}
-		return res;
 	}
-	
-	int precendence(char c){
-		if(c=='^') return 3;
-		if(c=='*' || c == '/') return 2;
-		if(c=='+' || c == '-') return 1;
-		return -1;
+	while(!st.empty()){
+		res+=st.top();
+		st.pop();
 	}
-	
-	bool isAssociated(char c){
-		return c=='^';
-	}
+	return res;
+}
+
 };
 
 int main(){
@@ -49,4 +58,4 @@ int main(){
 	cin >> s;
 	Solution *so = new Solution();
 	cout << so->infixToPostfix(s) << endl;
-};
+}

@@ -2,37 +2,37 @@
 #include<stack>
 using namespace std;
 
-bool matching(char a, char b){
-	return (
-			(a=='(' && b==')') || 
-			(a=='{' && b=='}') ||
-			(a=='[' && b==']')
-			);	
-}
-
-bool isBalanced(string& str){
-	stack<char> s;
-	for(int i = 0;i<=str.length()-1;i++){
-		if(str[i]=='(' || str[i]=='{' || str[i]=='['){
-			s.push(str[i]);
-		}
-		else{
-			if(s.empty()==true){
-				return false;
-			}
-			if(matching(s.top(),str[i]) == false){
-				return false;
-			}
-			else {
-				s.pop();
-			}
-		}
+class Solution{
+public:
+	bool isMatching(char a, char b){
+		return (
+			(a=='(' && b==')') ||
+			(a=='[' && b==']') ||
+			(a=='{' && b=='}') 
+		)
 	}
-	return s.empty() == true;
-}
+	bool isValid(string s){
+		stack<char> st;
+		for(char c:s){
+			if(c=='(' || c=='{' || c=='['){
+				st.push(c);
+			}
+			else{
+				if(st.empty()){
+					return false;
+				}
+				if(isMatching(st.top(),c) == false){
+					return false;
+				}
+				else {
+					st.pop();
+				}
+			}
+		}
+		return st.empty();
+	}
+};
 
 int main(){
-	string s;
-	s = "({[]})";
-	isBalanced(s) ? cout << "YES\n" : cout << "NO\n";
+
 }
